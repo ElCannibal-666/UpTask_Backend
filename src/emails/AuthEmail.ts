@@ -3,6 +3,7 @@ import { transporter } from "../config/nodemailer"
 interface IEmail {
     email: string
     name: string
+    departament: string,
     token: string
 }
 
@@ -13,7 +14,7 @@ export class AuthEmail {
             to: user.email,
             subject: "Uptask - Confirma tu cuenta",
             text: "Confirma tu cuenta",
-            html: `<p>Hola: ${user.name}, has creado tu cuenta en el administrador de proyectos,
+            html: `<p>Hola: ${user.name} del departamento ${user.departament}, has creado tu cuenta en el administrador de proyectos,
             ya casi esta todo listo, solo debes confirmar tu cuenta</p>
                 <p>Visita el siguiente enlace:</p>
                 <a href="${process.env.FRONTEND_URL}/auth/confirm-account">Confirmar cuenta</a>

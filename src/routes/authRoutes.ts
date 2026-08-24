@@ -8,6 +8,7 @@ const router = Router()
 
 router.post("/create-account",
     body("name").notEmpty().withMessage("El nombre no puede ir vacio"),
+    body("departament").notEmpty().withMessage("El nombre del departamento no puede ir vacio"),
     body("password").isLength({ min: 8 }).withMessage("El password es muy corto, minimo 8 caracteres"),
     body("password_confirmation").custom((value, { req }) => {
         if (value !== req.body.password) {

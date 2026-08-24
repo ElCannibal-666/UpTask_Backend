@@ -110,9 +110,9 @@ router.post("/:projectId/tasks/:taskId/status",
 
 //** Routes for teams */
 router.post("/:projectId/team/find",
-    body("email").isEmail().toLowerCase().withMessage("Correo no válido"),
+    body("name").notEmpty().withMessage("Nombre no Válido"),
     handleImputErrors,
-    TeamMemberController.findMemberByEmail
+    TeamMemberController.findMemberByName
 )
 
 router.get("/:projectId/team",

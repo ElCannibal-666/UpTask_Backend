@@ -10,7 +10,7 @@ export class AuthController {
 
     static createAccount = async (req: Request, res: Response) => {
         try {
-            const { password, email } = req.body
+            const { password, email, departament } = req.body
 
             // Prevenir usuarios duplicados
             const userExist = await User.findOne({ email })
@@ -34,6 +34,7 @@ export class AuthController {
             AuthEmail.sendConfirmationEmail({
                 email: user.email,
                 name: user.name,
+                departament: user.departament,
                 token: token.token
             })
 
@@ -85,6 +86,7 @@ export class AuthController {
                 AuthEmail.sendConfirmationEmail({
                     email: user.email,
                     name: user.name,
+                    departament: user.departament,
                     token: token.token
                 })
                 const error = new Error("La cuenta no ha sido confirmada, hemos enviado un e-mail de confirmacion")
@@ -132,6 +134,7 @@ export class AuthController {
             AuthEmail.sendConfirmationEmail({
                 email: user.email,
                 name: user.name,
+                departament: user.departament,
                 token: token.token
             })
 
@@ -166,6 +169,7 @@ export class AuthController {
             AuthEmail.sendPasswordResetToken({
                 email: user.email,
                 name: user.name,
+                departament: user.departament,
                 token: token.token
             })
 

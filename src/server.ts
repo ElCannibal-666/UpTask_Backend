@@ -8,7 +8,7 @@ import authRoutes from "./routes/authRoutes"
 import projectRoutes from "./routes/projectRoutes"
 
 
-// Llamama a la configuracion de las variables de entorno
+// Llamada a la configuracion de las variables de entorno
 dotenv.config()
 
 // Llamada a la base de datos de Mongo

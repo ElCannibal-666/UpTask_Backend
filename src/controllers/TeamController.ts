@@ -3,11 +3,11 @@ import User from "../models/User"
 import Project from "../models/Project"
 
 export class TeamMemberController {
-    static findMemberByEmail = async (req: Request, res: Response) => {
-        const { email } = req.body
+    static findMemberByName = async (req: Request, res: Response) => {
+        const { name } = req.body
 
         //Find user
-        const user = await User.findOne({ email }).select("id email name")
+        const user = await User.findOne({ name }).select("id email name")
         if (!user) {
             const error = new Error("Usuario No Encontrado")
             return res.status(404).json({ error: error.message })
@@ -28,7 +28,7 @@ export class TeamMemberController {
     static addMemberById = async (req: Request, res: Response) => {
         const { id } = req.body
 
-        //Find user
+        //Encontrar usuario
         const user = await User.findById(id).select("id")
         if (!user) {
             const error = new Error("Usuario No Encontrado")
